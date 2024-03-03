@@ -1,0 +1,17 @@
+services:
+  web:
+    build:
+      context: ./docker/app/
+    ports:
+      - 3000:3000
+    volumes:
+      - ./docker/app:/app
+      - node_modules:/app/node_modules
+    networks:
+      - blogapp-network
+    command: ash -c "npm run dev"
+volumes:
+  node_modules:
+networks:
+  blogapp-network:
+    external: true
